@@ -106,6 +106,10 @@ PRODUCT_COPY_FILES += \
     $(SONY_ROOT)/vendor/etc/card-defs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/card-defs.xml \
     $(SONY_ROOT)/vendor/etc/usecaseKvManager.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usecaseKvManager.xml
 
+# Display
+PRODUCT_COPY_FILES += \
+    $(SONY_ROOT)/vendor/etc/display/DPU10__.xml:$(TARGET_COPY_OUT_VENDOR)/etc/display/DPU10__.xml
+
 # Media
 PRODUCT_COPY_FILES += \
     $(SONY_ROOT)/vendor/etc/media_codecs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs.xml \
