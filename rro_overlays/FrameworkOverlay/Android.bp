@@ -1,5 +1,5 @@
 runtime_resource_overlay {
-    name: "FrameworkOverlayYodo",
+    name: "FrameworkOverlayAsahi",
     sdk_version: "current",
     vendor: true
 }

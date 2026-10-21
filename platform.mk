@@ -159,8 +159,8 @@ PRODUCT_COPY_FILES += \
 
 # Platform Runtime Resource Overlays
 PRODUCT_PACKAGES += \
-    FrameworkOverlayasahi \
-    SettingsOverlayasahi
+    FrameworkOverlayAsahi \
+    SettingsOverlayAsahi
 
 # Platform specific init
 PRODUCT_PACKAGES += \
