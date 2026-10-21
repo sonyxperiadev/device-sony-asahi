@@ -15,14 +15,14 @@
 # Platform path
 PLATFORM_COMMON_PATH := device/sony/asahi
 
-KALAMA := sm8650
+PINEAPPLE := sm8650
 
 SOMC_PLATFORM := asahi
-SOMC_KERNEL_VERSION := 6.1
+SOMC_KERNEL_VERSION := 6.6
 
 PRODUCT_PLATFORM_SOD := true
 
-TARGET_BOARD_PLATFORM := $(KALAMA)
+TARGET_BOARD_PLATFORM := $(PINEAPPLE)
 
 SONY_ROOT := $(PLATFORM_COMMON_PATH)/rootdir
 
@@ -76,10 +76,7 @@ NXP_CHIP_FW_TYPE := PN557
 AUDIO_FEATURE_ENABLED_DYNAMIC_LOG := true
 
 # Display
-TARGET_HAS_HDR_DISPLAY := true
 TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
-TARGET_USES_DRM_PP := true
-NUM_FRAMEBUFFER_SURFACE_BUFFERS := 2
 
 # CAMERA
 TARGET_USES_QTI_CAMERA := true
@@ -108,6 +105,10 @@ PRODUCT_COPY_FILES += \
     $(SONY_ROOT)/vendor/etc/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
     $(SONY_ROOT)/vendor/etc/card-defs.xml:$(TARGET_COPY_OUT_VENDOR)/etc/card-defs.xml \
     $(SONY_ROOT)/vendor/etc/usecaseKvManager.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usecaseKvManager.xml
+
+# Display
+PRODUCT_COPY_FILES += \
+    $(SONY_ROOT)/vendor/etc/display/DPU10__.xml:$(TARGET_COPY_OUT_VENDOR)/etc/display/DPU10__.xml
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -159,8 +160,8 @@ PRODUCT_COPY_FILES += \
 
 # Platform Runtime Resource Overlays
 PRODUCT_PACKAGES += \
-    FrameworkOverlayasahi \
-    SettingsOverlayasahi
+    FrameworkOverlayAsahi \
+    SettingsOverlayAsahi
 
 # Platform specific init
 PRODUCT_PACKAGES += \
@@ -173,13 +174,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vendor.qti.camera.provider-service_64.rc \
     model3.dat
-
-# GFX
-PRODUCT_PACKAGES += \
-    copybit.sm8650 \
-    gralloc.sm8650 \
-    hwcomposer.sm8650 \
-    memtrack.default
 
 # KeyMint passthrough service init file
 # (executable is on odm)
@@ -200,10 +194,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 DEVICE_MANIFEST_FILE += \
     $(PLATFORM_COMMON_PATH)/vintf/android.hardware.security.keymint-service-qti.xml \
     $(PLATFORM_COMMON_PATH)/vintf/vendor.qti.hardware.qseecom_v1.0.xml
-
-# GPS
-PRODUCT_PACKAGES += \
-    gps.sm8650
 
 # Sensors init
 PRODUCT_PACKAGES += \
@@ -402,9 +392,25 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.display.enable_hdr10_gpu_target=1 \
     debug.sf.predict_hwc_composition_strategy=0 \
     debug.sf.treat_170m_as_sRGB=1 \
+    debug.graphics.game_default_frame_rate.disabled=1 \
     vendor.display.enable_display_extensions=1 \
+    vendor.gralloc.enable_snapalloc=1 \
     vendor.display.disable_rotator_ubwc=1 \
     vendor.display.disable_layer_stitch=0
+    vendor.display.enable_fb_scaling=0 \
+    vendor.display.target.version=4 \
+    vendor.gralloc.use_dma_buf_heaps=1 \
+    vendor.display.enable_posted_start_dyn=2 \
+    vendor.display.enable_allow_idle_fallback=1 \
+    vendor.display.enable_perf_hint_large_comp_cycle=1 \
+    vendor.display.enable_rotator_ui=1 \
+    vendor.display.enable_spec_fence=1 \
+    vendor.display.thermal.version=1 \
+    vendor.display.enable_rc_support=1 \
+    vendor.display.enable_latch_media_content=1 \
+    vendor.display.enable_inline_writeback=1 \
+    vendor.display.timed_render_enable=1 \
+    vendor.gralloc.hw_supports_ubwcp=0 \
 
 # Display - HDR/WCG
 PRODUCT_PROPERTY_OVERRIDES += \

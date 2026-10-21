@@ -1,5 +1,5 @@
 runtime_resource_overlay {
-    name: "SettingsOverlayYodo",
+    name: "SettingsOverlayAsahi",
     sdk_version: "current",
     vendor: true
 }
